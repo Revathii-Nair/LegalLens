@@ -1,0 +1,99 @@
+/* ---------------- THEME COLORS ---------------- */
+:root {
+  --color-brand: #4f46e5; /* Indigo 600 */
+  --color-brand-hover: #4338ca; /* Indigo 700 */
+  --color-legal-dark: #0f172a; /* Slate 900 (Main BG) */
+  --color-legal-panel: #1e293b; /* Slate 800 (Cards) */
+  --text-primary: #f8fafc; /* Slate 50 */
+  --text-secondary: #94a3b8; /* Slate 400 */
+  --border-default: rgba(255, 255, 255, 0.05);
+}
+
+/* ---------------- BASE STYLES ---------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-legal-dark);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  font-family:
+    'Inter',
+    -apple-system,
+    system-ui,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* ---------------- LAYOUT STRUCTURE ---------------- */
+/* The appContainer ensures the Sidebar and MainContent sit side-by-side */
+.appContainer {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-legal-dark);
+}
+
+/* 1. Sidebar stays fixed width so it doesn't squish */
+.sideBar {
+  width: 260px;
+  min-width: 260px;
+  flex-shrink: 0;
+  height: 100%;
+  border-right: 1px solid var(--border-default);
+}
+
+/* 2. MainContentArea takes up ALL remaining space to the right */
+.mainContentArea {
+  flex: 1; /* This is the key fix to fill the screen */
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- DASHBOARD STYLES ---------------- */
+/* Applying the radial glow effects from your screenshot */
+.dashboard-bg {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(79, 70, 229, 0.15), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(99, 102, 241, 0.1), transparent 40%), var(--color-legal-dark);
+}
+
+/* Global Card Styling */
+.glass-card {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-default);
+  border-radius: 1rem;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(79, 70, 229, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ---------------- CUSTOM SCROLLBAR ---------------- */
+.mainContentArea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mainContentArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mainContentArea::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.mainContentArea::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.4);
+}

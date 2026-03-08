@@ -1,0 +1,511 @@
+/* --- ActionButton Styles --- */
+.btnAction {
+  background-color: #4f46e5;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btnAction:hover {
+  background-color: #4338ca;
+}
+
+/* --- CaseCard Styles --- */
+.caseCard {
+  padding: 1rem;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.caseCard:hover {
+  background-color: #334155;
+}
+
+.caseId {
+  font-size: 0.75rem;
+  color: #818cf8;
+  font-weight: 700;
+  margin: 0;
+}
+
+.caseTitle {
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0.25rem 0;
+}
+
+.caseDescription {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.casePriority {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.priorityHigh {
+  color: #f87171;
+}
+.priorityMedium {
+  color: #fbbf24;
+}
+.priorityLow {
+  color: #4ade80;
+}
+
+/* --- CaseDetails Styles --- */
+.detailsPage {
+  padding: 2.5rem;
+  color: #ffffff;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #818cf8;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #a5b4fc;
+}
+
+.detailsGlassCard {
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.detailsHeader h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.detailsHeader p {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.detailsHeader span {
+  color: #818cf8;
+  font-family: monospace;
+}
+
+.detailsInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.infoTile {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.infoTile h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.statusActive {
+  color: #34d399;
+  font-weight: 500;
+}
+
+/* --- CaseRow Styles --- */
+.caseRowItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.caseRowItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.caseRowInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.caseRowId {
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: -0.05em;
+}
+
+.caseRowTitle {
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+.caseRowBadge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.rowPriorityHigh {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.rowPriorityMedium {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.rowPriorityLow {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* --- CaseTabs Styles --- */
+.tabsContainer {
+  margin-top: 2rem;
+}
+
+.tabsHeader {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabBtn {
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tabBtn:hover {
+  color: #ffffff;
+}
+
+.tabActive {
+  border-bottom: 2px solid #4f46e5;
+  color: #ffffff;
+}
+
+.tabContent {
+  margin-top: 1rem;
+}
+
+/* --- FilesTab Styles --- */
+.tabFilesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btnUpload {
+  align-self: flex-start;
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btnUpload:hover {
+  background-color: #4338ca;
+}
+
+.fileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fileLink {
+  color: #818cf8;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+
+.fileLink:hover {
+  text-decoration: underline;
+}
+
+/* --- MembersTab Styles --- */
+.memberList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+.memberList li span {
+  color: #94a3b8;
+  margin-left: 0.25rem;
+}
+
+/* --- NavItem Styles --- */
+.navItemLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #94a3b8;
+}
+
+.navItemLink:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.navItemActive {
+  background-color: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+}
+
+.navLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* --- Notification Styles --- */
+.notifItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s;
+}
+
+.notifItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.notifText {
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.notifTime {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* --- Sidebar Styles --- */
+
+.sideBar {
+  width: 16rem;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sideBarBranding {
+  margin-bottom: 2.5rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.sideBarLogo {
+  width: 2rem;
+  height: 2rem;
+  background-color: #4f46e5;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoEmoji {
+  font-size: 1.25rem;
+}
+
+.sideBarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.sideBarFooter {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- StatCard Styles --- */
+.statCardItem {
+  background-color: #1e293b; /* bg-legal-card */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.statCardItem:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.statCardFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.statCardTitle {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.statCardValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.statCardIconBox {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.statCardGlow {
+  height: 0.25rem;
+  width: 50%;
+  margin-top: 1rem;
+  border-radius: 9999px;
+  opacity: 0.2;
+  filter: blur(4px);
+}
+
+/* StatCard Themes */
+.themeBlue {
+  background-color: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+}
+.themeEmerald {
+  background-color: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+.themeIndigo {
+  background-color: rgba(129, 140, 248, 0.1);
+  color: #818cf8;
+}
+.themeRed {
+  background-color: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.statCardGlow.themeBlue {
+  background-color: #60a5fa;
+}
+.statCardGlow.themeEmerald {
+  background-color: #34d399;
+}
+.statCardGlow.themeIndigo {
+  background-color: #818cf8;
+}
+.statCardGlow.themeRed {
+  background-color: #f87171;
+}
+
+/* --- TimelineTab Styles --- */
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timelineEntry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timelineDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #4f46e5;
+  border-radius: 50%;
+}
+
+.timelineInfo {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 0;
+}
