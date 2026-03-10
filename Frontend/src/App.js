@@ -21,17 +21,9 @@ function App() {
     <div className="appContainer">
       <Routes>
         {/* Login route without sidebar */}
-        <Route path="/login" element={<LoginContainer />} />
+        <Route path="/" element={<LoginContainer />} />
 
         {/* Dashboard routes with sidebar */}
-        <Route
-          path="/"
-          element={
-            <DashboardLayout>
-              <LegalLensDashboard />
-            </DashboardLayout>
-          }
-        />
         <Route
           path="/dashboard"
           element={

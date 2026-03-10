@@ -19,8 +19,9 @@ function LoginForm({ role, onBack }) {
 
       if (res.data.message === 'Login successful') {
         // Save user info for later use
+        localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
-        navigate('/Dashboard');
+        navigate('/dashboard');
       } else {
         setError('Invalid credentials');
       }

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../../api';
 import StatCard from '../../components/common/StatCard.js';
 import CaseRow from '../../components/cases/CaseRow.js';
 import Notification from '../../components/common/Notification.js';
@@ -6,6 +8,68 @@ import { Plus, FolderOpen, Bell, Search } from 'lucide-react';
 import './Dashboard.css';
 
 export default function LegalLensDashboard() {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState('');
+  const [assignedCases, setAssignedCases] = useState([]);
+  const [recentCases, setRecentCases] = useState([]);
+  const [caseStats, setCaseStats] = useState({
+    totalAssigned: 0,
+    activeCases: 0,
+    closedCases: 0,
+    highPriorityCases: 0,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 1. Dashboard message
+        const dashboardRes = await api.get('/dashboard');
+        setMessage(dashboardRes.data.message);
+
+        // 2. Assigned cases (latest 3 for current user)
+        const casesRes = await api.get('/assigned-cases');
+        if (casesRes.data.message === 'no assigned cases') {
+          setAssignedCases([]);
+        } else {
+          setAssignedCases(casesRes.data);
+        }
+
+        // 3. Open Cases (latest 3)
+        const recentRes = await api.get('/recent-cases');
+        if (recentRes.data.message === 'no recent cases') {
+          setRecentCases([]);
+        } else {
+          setRecentCases(recentRes.data);
+        }
+
+        //4. Case stats
+        const statsRes = await api.get('/case-stats');
+        setCaseStats(statsRes.data);
+      } catch (err) {
+        console.error('Error fetching dashboard data:', err);
+        setMessage('Unauthorized');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/', { replace: true });
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
+
+  const getPriorityLabel = (num) => {
+    switch (num) {
+      case 3:
+        return 'High';
+      case 2:
+        return 'Medium';
+      case 1:
+        return 'Low';
+      default:
+        return 'Unknown';
+    }
+  };
+
   return (
     <div className="dashboardMain">
       {/* 1. TOP HEADER */}
@@ -15,8 +79,11 @@ export default function LegalLensDashboard() {
             <span>LEGALLENS</span> Dashboard
           </h1>
           <p className="systemStatus">
-            Welcome back, <span className="highlightText">Lead Investigator</span> • System status:
-            Optimal
+            Welcome back,{' '}
+            <span className="highlightText">
+              {JSON.parse(localStorage.getItem('user'))?.name || 'User'}
+            </span>{' '}
+            • {message || 'System status: Optimal'}
           </p>
         </div>
 
@@ -37,10 +104,10 @@ export default function LegalLensDashboard() {
 
       {/* 2. STATS GRID */}
       <div className="statsGrid">
-        <StatCard title="Total Cases" value="42" type="total" />
-        <StatCard title="Active Cases" value="18" type="active" />
-        <StatCard title="Closed Cases" value="24" type="closed" />
-        <StatCard title="High Priority" value="08" type="priority" />
+        <StatCard title="Total Cases" value={caseStats.totalAssigned} type="total" />
+        <StatCard title="Active Cases" value={caseStats.activeCases} type="active" />
+        <StatCard title="Closed Cases" value={caseStats.closedCases} type="closed" />
+        <StatCard title="High Priority" value={caseStats.highPriorityCases} type="priority" />
       </div>
 
       {/* 3. MIDDLE SECTION */}
@@ -51,9 +118,21 @@ export default function LegalLensDashboard() {
             <button className="viewAllBtn">View All ›</button>
           </div>
           <div className="caseList">
-            <CaseRow id="CI-104" title="Cyber Crime" priority="Medium" status="Active" />
-            <CaseRow id="CI-105" title="Robbery Case" priority="Low" status="New" />
-            <CaseRow id="CI-108" title="Missing Person" priority="High" status="Active" />
+            <div className="caseList">
+              {recentCases.length === 0 ? (
+                <p className="noCasesMsg">no recent cases</p>
+              ) : (
+                recentCases.map((c) => (
+                  <CaseRow
+                    key={c.id}
+                    id={c.caseId}
+                    title={c.title}
+                    priority={getPriorityLabel(c.priority)}
+                    status={c.status}
+                  />
+                ))
+              )}
+            </div>
           </div>
         </section>
 
@@ -63,9 +142,19 @@ export default function LegalLensDashboard() {
             <button className="viewAllBtn">View All ›</button>
           </div>
           <div className="caseList">
-            <CaseRow id="CI-102" title="Bank Fraud Investigation" priority="High" status="High" />
-            <CaseRow id="CI-099" title="Warehouse Theft" priority="Low" status="Closed" />
-            <CaseRow id="CI-112" title="Narcotics Distribution" priority="High" status="Active" />
+            {assignedCases.length === 0 ? (
+              <p className="noCasesMsg">no assigned cases</p>
+            ) : (
+              assignedCases.map((c) => (
+                <CaseRow
+                  key={c.id}
+                  id={c.caseId}
+                  title={c.title}
+                  priority={getPriorityLabel(c.priority)}
+                  status={c.status}
+                />
+              ))
+            )}
           </div>
         </section>
       </div>

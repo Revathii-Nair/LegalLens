@@ -8,6 +8,12 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/', { replace: true });
+  };
+
   return (
     <div className="sideBar">
       <div className="sideBarBranding">
@@ -21,7 +27,7 @@ export default function Sidebar() {
           icon={<Home size={18} />}
           label="Home"
           active={location.pathname === '/'}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/dashboard')}
         />
         <NavItem
           icon={<Folder size={18} />}
@@ -34,7 +40,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="sideBarFooter">
-        <NavItem icon={<LogOut size={18} />} label="Log Out" />
+        <NavItem icon={<LogOut size={18} />} onClick={handleLogout} label="Log Out" />
       </div>
     </div>
   );
