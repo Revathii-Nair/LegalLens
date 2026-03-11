@@ -16,6 +16,14 @@
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
+.Header {
+  display: flex;
+  justify-content: flex-end; /* push actions to the right */
+  align-items: center;
+  padding: 1.2rem 3.1rem; /* spacing inside */
+  margin-top: 2.4rem; /* push down from top */
+  margin-bottom: 2rem;
+}
 
 @media (min-width: 768px) {
   .dashboardHeader {

@@ -70,6 +70,10 @@ export default function LegalLensDashboard() {
     }
   };
 
+  const toAssignedCases = () => {
+    navigate('/cases');
+  };
+
   return (
     <div className="dashboardMain">
       {/* 1. TOP HEADER */}
@@ -139,7 +143,9 @@ export default function LegalLensDashboard() {
         <section className="glassCard">
           <div className="sectionHeader">
             <h2>My Assigned Cases</h2>
-            <button className="viewAllBtn">View All ›</button>
+            <button className="viewAllBtn" onClick={toAssignedCases}>
+              View All ›
+            </button>
           </div>
           <div className="caseList">
             {assignedCases.length === 0 ? (

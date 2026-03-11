@@ -4,6 +4,7 @@ import LoginContainer from './components/auth/LoginContainer.js';
 import LegalLensDashboard from './pages/dashboard/LegalLensDashboard.js';
 import CasesPage from './pages/cases/CasesPage.js';
 import CaseDetails from './components/cases/CaseDetails.js';
+import Header from './components/common/Header.js';
 import './App.css';
 
 // Layout wrapper for all authenticated pages
