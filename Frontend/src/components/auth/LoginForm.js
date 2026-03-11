@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../api';
 import axios from 'axios';
 
 function LoginForm({ role, onBack }) {
@@ -12,10 +13,8 @@ function LoginForm({ role, onBack }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/login', {
-        email,
-        password,
-      });
+      // Inside handleSubmit in LoginForm.js
+const res = await axios.post('http://localhost:5000/login', { email, password });
 
       if (res.data.message === 'Login successful') {
         // Save user info for later use
