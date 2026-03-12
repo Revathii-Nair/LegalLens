@@ -1,15 +1,20 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../Components.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../Components.css";
 
 export default function CaseRow({ id, title, priority }) {
   const navigate = useNavigate();
 
   // Mapping priority to simplified CSS classes
   const priorityClass = {
-    High: 'rowPriorityHigh',
-    Medium: 'rowPriorityMedium',
-    Low: 'rowPriorityLow',
+    High: "rowPriorityHigh",
+    Medium: "rowPriorityMedium",
+    Low: "rowPriorityLow",
+  };
+  const statusClass = {
+    Closed: "rowPriorityHigh",
+    Archived: "rowPriorityMedium",
+    Open: "rowPriorityLow",
   };
 
   const handleClick = () => navigate(`/cases/${id}`);
@@ -20,7 +25,10 @@ export default function CaseRow({ id, title, priority }) {
         <span className="caseRowId">{id}</span>
         <span className="caseRowTitle">{title}</span>
       </div>
-      <span className={`caseRowBadge ${priorityClass[priority]}`}>{priority}</span>
+
+      <span className={`caseRowBadge ${priorityClass[priority]}`}>
+        {priority}
+      </span>
     </div>
   );
 }
